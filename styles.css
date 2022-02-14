@@ -72,6 +72,7 @@ header {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
   padding: 10px;
+  padding-bottom: 15px;
   box-sizing: border-box;
 }
 
