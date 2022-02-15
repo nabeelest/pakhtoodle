@@ -84,6 +84,7 @@ header {
 .square {
   border: 2px solid rgb(58, 58, 60);
   display: inline-block;
+  font-family: 'Noto Naskh Arabic', serif !important;
   min-width: 60px;
   min-height: 60px;
   display: flex;
@@ -123,8 +124,8 @@ header {
 
 @media only screen and (max-width: 400px) {
   .square {
-    min-width: 15vw;
-    min-height: 15vw;
+    min-width: 13vw;
+    min-height: 13vw;
   }
 }
 
