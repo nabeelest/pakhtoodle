@@ -1,8 +1,6 @@
 html,
 body {
   height: 100%;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   background-color: rgb(18, 18, 19);
@@ -42,7 +40,7 @@ header {
 
 .title {
   color: gainsboro;
-  font-family: 'PT Serif', serif;
+  font-family: 'PT Serif', serif !important;
   font-size: 2.3rem;
   font-weight: bold;
   margin: 0.4rem 0 0.4rem 0;
@@ -143,7 +141,7 @@ header {
 }
 
 .keyboard-row button {
-  font-family: inherit;
+  font-family: 'PT Serif', serif !important;
   font-weight: bold;
   font-size: 20px;
   border: 0;
