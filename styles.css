@@ -126,7 +126,16 @@ header {
   .square {
     min-width: 13vw;
     min-height: 13vw;
+    font-size: 30px;
+    font-family: 'Noto Naskh Arabic', serif !important;
   }
+
+  .keyboard-row button {
+    font-family: 'Noto Naskh Arabic', serif !important;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  
 }
 
 #keyboard-container {
