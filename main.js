@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function showResult() {
     const finalResultEl = document.getElementById("final-score");
 //     finalResultEl.textContent = "You win!";
-
+    
+    window.confirm(`Congratulations! You've guessed it right.`);
     const totalWins = window.localStorage.getItem("totalWins") || 0;
     window.localStorage.setItem("totalWins", Number(totalWins) + 1);
 
@@ -117,8 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLosingResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = `Unsuccessful Today!`;
-
+//     finalResultEl.textContent = `Unsuccessful Today!`;
+    window.confirm(`Unsuccessful Today!`);
     window.localStorage.setItem("currentStreak", 0);
   }
 
