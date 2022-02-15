@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let availableSpace = 1;
   let guessedWords = [[]];
 
-  const words = ["ارمان","افغان", "المان","ایمان","نصوار"];
+  const words = ["جانان","جانان", "جانان","جانان","جانان"];
   let currentWord = words[currentWordIndex];
 
-  initLocalStorage();
+//   initLocalStorage();
   initHelpModal();
   initStatsModal();
   createSquares();
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const finalResultEl = document.getElementById("final-score");
 //     finalResultEl.textContent = "You win!";
     
-    window.confirm(`Congratulations! You've guessed it right.`);
+//     window.confirm(`Congratulations! You've guessed it right.`);
     const totalWins = window.localStorage.getItem("totalWins") || 0;
     window.localStorage.setItem("totalWins", Number(totalWins) + 1);
 
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showLosingResult() {
     const finalResultEl = document.getElementById("final-score");
 //     finalResultEl.textContent = `Unsuccessful Today!`;
-    window.confirm(`Unsuccessful Today!`);
+//     window.confirm(`Unsuccessful Today!`);
     window.localStorage.setItem("currentStreak", 0);
   }
 
