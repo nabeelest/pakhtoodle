@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initStatsModal();
   createSquares();
   addKeyboardClicks();
-  loadLocalStorage();
+//   loadLocalStorage();
 
   function initLocalStorage() {
     const storedCurrentWordIndex =
