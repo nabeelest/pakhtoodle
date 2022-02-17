@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let result = '';
   let lnCount = '';
 
-  const words = ["ماښام", "ماښام", "ماښام", "ماښام", "ماښام"];
+  const words = ["شونډې", "شونډې", "شونډې", "شونډې", "شونډې"];
   let currentWord = words[currentWordIndex];
 
   initLocalStorage();
