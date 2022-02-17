@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentWordIndex = 0;
   let guessedWordCount = 0;
   let availableSpace = 1;
-  let guessedWords = [[]];
+  let guessedWords = [
+    []
+  ];
+  let result = '';
+  let lnCount = '';
 
   const words = ["ماښام", "ماښام", "ماښام", "ماښام", "ماښام"];
   let currentWord = words[currentWordIndex];
@@ -14,6 +18,25 @@ document.addEventListener("DOMContentLoaded", () => {
   createSquares();
   addKeyboardClicks();
   loadLocalStorage();
+
+  function Clipboard_CopyTo(value) {
+    var tempInput = document.createElement("textarea");
+    tempInput.value = value;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  }
+
+  document.querySelector('#Copy').onclick = function() {
+    result = "Today's Pukhoodle\n" + result + "Pukhtoodle.online";
+    Clipboard_CopyTo(result);
+    document.querySelector(".fa-share").innerText = "Copied to clipboard";
+    setTimeout(function() {
+      document.querySelector(".fa-share").innerText = "Share";
+    }, 1000);
+
+  }
 
   function initLocalStorage() {
     const storedCurrentWordIndex =
@@ -106,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showResult() {
     const finalResultEl = document.getElementById("final-score");
-//     finalResultEl.textContent = "Wordle 1 - You win!";
+    // finalResultEl.textContent = "Wordle 1 - You win!";
 
     const totalWins = window.localStorage.getItem("totalWins") || 0;
     window.localStorage.setItem("totalWins", Number(totalWins) + 1);
@@ -151,6 +174,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .includes(letter.toUpperCase());
 
     if (!isCorrectLetter) {
+      result = result.concat('⬛');
+      lnCount = lnCount.concat(' ');
+      if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+        result = result.concat('\n');
+      }
       return "incorrect-letter";
     }
 
@@ -159,6 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
       letter.toLowerCase() === letterInThatPosition.toLowerCase();
 
     if (isCorrectPosition) {
+      result = result.concat('🟩');
+      lnCount = lnCount.concat(' ');
+      if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+        result = result.concat('\n');
+      }
       return "correct-letter-in-place";
     }
 
@@ -166,6 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
       currentWordArr.filter((l) => l === letter).length > 1;
 
     if (!isGuessedMoreThanOnce) {
+      result = result.concat('🟨');
+      lnCount = lnCount.concat(' ');
+      if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+        result = result.concat('\n');
+      }
       return "correct-letter";
     }
 
@@ -174,6 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // is guessed more than once and exists more than once
     if (existsMoreThanOnce) {
+      result = result.concat('🟨');
+      lnCount = lnCount.concat(' ');
+      if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+        result = result.concat('\n');
+      }
       return "correct-letter";
     }
 
@@ -186,14 +229,26 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (!hasBeenGuessedAlready && !isGuessedCorrectlyLater) {
+      result = result.concat('🟩');
+      lnCount = lnCount.concat(' ');
+      if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+        result = result.concat('\n');
+      }
       return "correct-letter";
     }
 
+    result = result.concat('⬛');
+    lnCount = lnCount.concat(' ');
+    if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
+      result = result.concat('\n');
+    }
     return "incorrect-letter";
   }
 
   function updateWordIndex() {
-    console.log({ currentWordIndex });
+    console.log({
+      currentWordIndex
+    });
     window.localStorage.setItem("currentWordIndex", currentWordIndex + 1);
   }
 
@@ -303,7 +358,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function addKeyboardClicks() {
     const keys = document.querySelectorAll(".keyboard-row button");
     for (let i = 0; i < keys.length; i++) {
-      keys[i].addEventListener("click", ({ target }) => {
+      keys[i].addEventListener("click", ({
+        target
+      }) => {
         const key = target.getAttribute("data-key");
 
         if (key === "enter") {
@@ -331,17 +388,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const span = document.getElementById("close-help");
 
     // When the user clicks on the button, open the modal
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function() {
       modal.style.display = "block";
     });
 
     // When the user clicks on <span> (x), close the modal
-    span.addEventListener("click", function () {
+    span.addEventListener("click", function() {
       modal.style.display = "none";
     });
 
     // When the user clicks anywhere outside of the modal, close it
-    window.addEventListener("click", function (event) {
+    window.addEventListener("click", function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
@@ -371,18 +428,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const span = document.getElementById("close-stats");
 
     // When the user clicks on the button, open the modal
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function() {
       updateStatsModal();
       modal.style.display = "block";
     });
 
     // When the user clicks on <span> (x), close the modal
-    span.addEventListener("click", function () {
+    span.addEventListener("click", function() {
       modal.style.display = "none";
     });
 
     // When the user clicks anywhere outside of the modal, close it
-    window.addEventListener("click", function (event) {
+    window.addEventListener("click", function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
