@@ -8,8 +8,8 @@
   <title>Pukhtoodle</title>
 
   <script src="main.js"></script>
+  <script src="dist/clipboard.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
@@ -68,68 +68,62 @@
 
       <div id="keyboard-container">
         <div class="keyboard-row">
+          <button data-key="ص">ص</button>
+          <button data-key="ث">ث</button>
           <button data-key="ق">ق</button>
-          <button data-key="و">و</button>
-          <button data-key="ع">ع</button>
-          <button data-key="ر">ر</button>
+          <button data-key="ف">ف</button>
+          <button data-key="ځ">ځ</button>
+          <button data-key="څ">څ</button>
+          <button data-key="خ">خ</button>
+          <button data-key="ح">ح</button>
+          <button data-key="چ">چ</button>
+          <button data-key="ج">ج</button>
+        </div>
+        <div class="keyboard-row">
+          <button data-key="ض">ض</button>
+          <button data-key="ش">ش</button>
+          <button data-key="س">س</button>
+          <button data-key="ب">ب</button>
+          <button data-key="ل">ل</button>
+          <button data-key="ا">ا</button>
+          <button data-key="آ">آ</button>
           <button data-key="ت">ت</button>
-          <button data-key="ے">ے</button>
+          <button data-key="ن">ن</button>
+          <button data-key="ڼ">ڼ</button>
+          <button data-key="م">م</button>
+          <button data-key="ګ">ګ</button>
+        </div>
+        <div class="keyboard-row">
+          <div class="spacer-half"></div>
+          <button data-key="ښ">ښ</button>
+          <button data-key="ې">ې</button>
+          <button data-key="ۍ">ۍ</button>
           <button data-key="ئ">ئ</button>
           <button data-key="ي">ي</button>
-          <button data-key="ه">ه</button>
-          <button data-key="پ">پ</button>
-        </div>
-        <div class="keyboard-row">
-          <button data-key="ښ">ښ</button>
-          <button data-key="ؤ">ؤ</button>
-          <button data-key="ږ">ږ</button>
-          <button data-key="ړ">ړ</button>
+          <button data-key="و">و</button>
           <button data-key="ټ">ټ</button>
-          <button data-key="ث">ث</button>
-          <button data-key="ۍ">ۍ</button>
-          <button data-key="ې">ې</button>
-          <button data-key="ۀ">ۀ</button>
-          <button data-key="څ">څ</button>
-        </div>
-        <div class="keyboard-row">
-          <div class="spacer-half"></div>
-          <button data-key="ا">ا</button>
-          <button data-key="س">س</button>
-          <button data-key="د">د</button>
-          <button data-key="ف">ف</button>
-          <button data-key="ګ">ګ</button>
-          <button data-key="ح">ح</button>
-          <button data-key="ج">ج</button>
-          <button data-key="ک">ک</button>
-          <button data-key="ل">ل</button>
-          <button data-key="ث">ث</button>
-          <button data-key="ظ">ظ</button>
-          <div class="spacer-half"></div>
-        </div>
-        <div class="keyboard-row">
-          <div class="spacer-half"></div>
-          <button data-key="آ">آ</button>
-          <button data-key="ص">ص</button>
-          <button data-key="ډ">ډ</button>
+          <button data-key="پ">پ</button>
+          <button data-key="ه">ه</button>
+          <button data-key="ع">ع</button>
           <button data-key="غ">غ</button>
-          <button data-key="ځ">ځ</button>
-          <button data-key="ض">ض</button>
-          <button data-key="خ">خ</button>
-          <button data-key="ز">ز</button>
-          <button data-key="ش">ش</button>
-          <button data-key="ڼ">ڼ</button>
+          <button data-key="ک">ک</button>
           <div class="spacer-half"></div>
         </div>
         <div class="keyboard-row">
+          <!-- <div class="spacer-half"></div> -->
           <button data-key="enter" class="wide-button">Enter</button>
-          <button data-key="چ">چ</button>
           <button data-key="ط">ط</button>
-          <button data-key="ب">ب</button>
-          <button data-key="ن">ن</button>
-          <button data-key="م">م</button>
-          <button data-key="ذ">ذ</button>
+          <button data-key="ظ">ظ</button>
+          <button data-key="ږ">ږ</button>
           <button data-key="ژ">ژ</button>
+          <button data-key="ز">ز</button>
+          <button data-key="ړ">ړ</button>
+          <button data-key="ر">ر</button>
+          <button data-key="ذ">ذ</button>
+          <button data-key="ډ">ډ</button>
+          <button data-key="د">د</button>
           <button data-key="del" class="wide-button">Del</button>
+          <!-- <div class="spacer-half"></div> -->
         </div>
       </div>
     </div>
@@ -158,6 +152,7 @@
       </div>
     </div>
 
+
     <div id="stats-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
@@ -174,6 +169,8 @@
         <h3>
           <strong>Current Streak</strong>: <span id="current-streak"></span>
         </h3>
+        <button type="button" class="btn btn-success btn-lg" id="Copy"><i class="fa-solid fa-share">Share</i></button>
+
       </div>
     </div>
   </div>
