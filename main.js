@@ -28,15 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(tempInput);
   }
 
-  document.querySelector('#Copy').onclick = function() {
-    result = "Today's Pukhoodle\n" + result + "Pukhtoodle.online";
-    Clipboard_CopyTo(result);
+document.querySelector('#Copy').onclick = function() {
+    let tempResult = result;
+    tempResult = "Today's Pukhoodle\n" + tempResult + "Pukhtoodle.online";
+    Clipboard_CopyTo(tempResult);
     document.querySelector(".fa-share").innerText = "Copied to clipboard";
     setTimeout(function() {
       document.querySelector(".fa-share").innerText = "Share";
     }, 1000);
-
+    tempResult.length = 0;
   }
+
 
   function initLocalStorage() {
     const storedCurrentWordIndex =
