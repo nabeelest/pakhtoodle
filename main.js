@@ -3,11 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentWordIndex = 0;
   let guessedWordCount = 0;
   let availableSpace = 1;
-  let guessedWords = [
-    []
-  ];
+  let guessedWords = [[]];
   let result = '';
   let lnCount = '';
+  var toogle = true;
 
   const words = ["سترګی","سترګی","سترګی","سترګی","سترګی"];
   let currentWord = words[currentWordIndex];
@@ -314,6 +313,7 @@ document.querySelector('#Copy').onclick = function() {
             updateWordIndex();
             updateTotalGames();
             resetGameState();
+            toogle = false;
           }
           return;
         }, 1200);
@@ -358,28 +358,29 @@ document.querySelector('#Copy').onclick = function() {
     availableSpace = availableSpace - 1;
   }
 
-  function addKeyboardClicks() {
-    const keys = document.querySelectorAll(".keyboard-row button");
-    for (let i = 0; i < keys.length; i++) {
-      keys[i].addEventListener("click", ({
-        target
-      }) => {
-        const key = target.getAttribute("data-key");
+function addKeyboardClicks() {
+      const keys = document.querySelectorAll(".keyboard-row button");
+      for (let i = 0; i < keys.length; i++) {
+        keys[i].addEventListener("click", ({
+          target
+        }) => {
+          if(toogle == true){
+          const key = target.getAttribute("data-key");
+          if (key === "enter") {
+            handleSubmitWord();
+            return;
+          }
 
-        if (key === "enter") {
-          handleSubmitWord();
-          return;
+          if (key === "del") {
+            handleDelete();
+            return;
+          }
+
+          updateGuessedLetters(key);
         }
-
-        if (key === "del") {
-          handleDelete();
-          return;
-        }
-
-        updateGuessedLetters(key);
-      });
+        });
+      }
     }
-  }
 
   function initHelpModal() {
     const modal = document.getElementById("help-modal");
