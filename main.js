@@ -79,6 +79,7 @@ document.querySelector('#Copy').onclick = function() {
 
       addKeyboardClicks();
     }
+    localStorage.setItem('currentWordIndex',0);
   }
 
   function resetGameState() {
