@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let availableSpace = 1;
   let guessedWords = [[]];
   let result = '';
+  let reversed = '';
   let lnCount = '';
+  let clipboard;
   var toogle = true;
 
-  const words = ["سترګۍ","سترګۍ","سترګۍ","سترګۍ","سترګۍ"]
+  const words = ["سترګۍ","سترګۍ","سترګۍ","سترګۍ","سترګۍ"];
   let currentWord = words[currentWordIndex];
-
   initLocalStorage();
   initHelpModal();
   initStatsModal();
@@ -18,6 +19,38 @@ document.addEventListener("DOMContentLoaded", () => {
   addKeyboardClicks();
   loadLocalStorage();
 
+
+  // Set the date we're counting down to
+var countDownDate = new Date("Feb 19, 2022 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = "  " + hours + ":"
+  + minutes + ":" + seconds;
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+
+//Copy to clipboard method
   function Clipboard_CopyTo(value) {
     var tempInput = document.createElement("textarea");
     tempInput.value = value;
@@ -27,18 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.removeChild(tempInput);
   }
 
-document.querySelector('#Copy').onclick = function() {
+  document.querySelector('#Copy').onclick = function() {
     let tempResult = result;
-    tempResult = "Today's Pukhoodle\n" + tempResult + "Pukhtoodle.online";
+    tempResult = "Today's Pukhoodle\n" + tempResult + "\nPukhtoodle.online";
     Clipboard_CopyTo(tempResult);
-    document.querySelector(".fa-share").innerText = "Copied to clipboard";
+    document.querySelector("#Copy").innerText = "Copied";
     setTimeout(function() {
-      document.querySelector(".fa-share").innerText = "Share";
+      document.querySelector("#Copy").innerText= "Share";
     }, 1000);
     tempResult.length = 0;
   }
 
 
+// init local storage
   function initLocalStorage() {
     const storedCurrentWordIndex =
       window.localStorage.getItem("currentWordIndex");
@@ -358,7 +392,7 @@ document.querySelector('#Copy').onclick = function() {
     availableSpace = availableSpace - 1;
   }
 
-function addKeyboardClicks() {
+  function addKeyboardClicks() {
       const keys = document.querySelectorAll(".keyboard-row button");
       for (let i = 0; i < keys.length; i++) {
         keys[i].addEventListener("click", ({
