@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lnCount = '';
   var toogle = true;
 
-  const words = ["سترګی","سترګی","سترګی","سترګی","سترګی"];
+  const words = ["سترګۍ","سترګۍ","سترګۍ","سترګۍ","سترګۍ"]
   let currentWord = words[currentWordIndex];
 
   initLocalStorage();
