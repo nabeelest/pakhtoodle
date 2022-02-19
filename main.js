@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "تکرار"
   ];
 
-  let currentWord = words[currentWordIndex];
+    let currentWord = words[currentWordIndex];
   initLocalStorage();
   initHelpModal();
   initStatsModal();
@@ -198,7 +198,7 @@ var x = setInterval(function() {
   + minutes + ":" + seconds;
 
   // If the count down is finished, write some text
-  if (hours == 0 && minutes == 0 && seconds == 0) {
+  if (hours == 22 && minutes == 36 && seconds == 30) {
     updateWordIndex();
     window.localStorage.setItem("toogle",1);
   }
@@ -237,7 +237,6 @@ var x = setInterval(function() {
       currentWordIndex = Number(storedCurrentWordIndex);
       currentWord = words[currentWordIndex];
     }
-    window.localStorage.getItem("toogle");
   }
 
   function loadLocalStorage() {
@@ -505,7 +504,7 @@ var x = setInterval(function() {
             updateTotalGames();
             resetGameState();
             toogle = 0;
-            window.localStorage.setItem("toogle",0)
+            window.localStorage.setItem("toogle",0);
           }
           return;
         }, 1200);
@@ -522,6 +521,8 @@ var x = setInterval(function() {
             // updateWordIndex();
             updateTotalGames();
             resetGameState();
+            toogle = 0;
+            window.localStorage.setItem("toogle",0);
           }
           return;
         }, 1200);
@@ -642,3 +643,4 @@ var x = setInterval(function() {
     });
   }
 });
+toogle = window.localStorage.getItem("toogle");
