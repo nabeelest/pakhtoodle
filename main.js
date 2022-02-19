@@ -7,10 +7,155 @@ document.addEventListener("DOMContentLoaded", () => {
   let result = '';
   let reversed = '';
   let lnCount = '';
-  let clipboard;
-  var toogle = true;
+  var toogle = 1;
+  const words = [
+      "لپاره",
+      "ټولګه",
+      "غواړي",
+      "اضافه",
+      "تعقيب",
+      "بدلون",
+      "انځور",
+      "واخلي",
+      "بېرته",
+      "یوازې",
+      "راغلل",
+      "ورکړي",
+      "لاندې",
+      "فورمه",
+      "مرسته",
+      "څومره",
+      "ستاسو",
+      "ولیکي",
+      "لپاره",
+      "وګورئ",
+      "وګورو",
+      "لومړی",
+      "هیواد",
+      "وساتي",
+      "اجازه",
+      "واوړي",
+      "ساینس",
+      "درېدل",
+      "تسکين",
+      "مایلو",
+      "پورته",
+      "احساس",
+      "کورنۍ",
+      "پېښوي",
+      "سندره",
+      "ټولګي",
+      "ضربوي",
+      "سيستم",
+      "حيران",
+      "وګورئ",
+      "راوړل",
+      "واوره",
+      "راولي",
+      "تياره",
+      "یادښت",
+      "ستوري",
+      "کولای",
+      "ترسره",
+      "ډرایو",
+      "ورکړه",
+      "تاوده",
+      "دقیقې",
+      "حقيقت",
+      "رښتيا",
+      "سندري",
+      "کېږدي",
+      "بيلګه",
+      "ښکاري",
+      "باران",
+      "بستره",
+      "واخلی",
+      "د وزن",
+      "عمومي",
+      "موضوع",
+      "دایره",
+      "احساس",
+      "پراخه",
+      "روزنه",
+      "تمرین",
+      "دیوال",
+      "اسمان",
+      "ګيلاس",
+      "میاشت",
+      "ګواهي",
+      "عجيبه",
+      "سمبول",
+      "وليکل",
+      "پاڅون",
+      "ګوزار",
+      "مخلوط",
+      "مساوي",
+      "بهيږي",
+      "لسيال",
+      "مقياس",
+      "پسرلی",
+      "وګوری",
+      "محتوا",
+      "قاموس",
+      "ميتود",
+      "ارګان",
+      "ورکړي",
+      "ریندي",
+      "تجربه",
+      "کلیدي",
+      "هوارو",
+      "موسکا",
+      "تشریح",
+      "نتيجه",
+      "سوځوي",
+      "غونډۍ",
+      "خوندي",
+      "قانون",
+      "عبارت",
+      "احساس",
+      "به نه",
+      "د خطر",
+      "نازکه",
+      "پروسه",
+      "ډاکټر",
+      "ساتنه",
+      "رسولو",
+      "حلقوي",
+      "راډیو",
+      "اټومي",
+      "تاريخ",
+      "کپتان",
+      "ضروري",
+      "وموښئ",
+      "نامتو",
+      "سترګې",
+      "سیاره",
+      "ننوځي",
+      "اجازه",
+      "اوسني",
+      "فشاري",
+      "وازګه",
+      "سټيشن",
+      "مناسب",
+      "بازار",
+      "ملاتړ",
+      "ماهيت",
+      "تحريک",
+      "وګورو",
+      "مهارت",
+      "د ښځو",
+      "څانګه",
+      "اينځر",
+      "تجربه",
+      "ماښام",
+      "خواړه",
+      "وسیله",
+      "برعکس",
+      "راټول",
+      "دوکان",
+      "تکرار"
+  ];
 
-  const words = ["سترګۍ","سترګۍ","سترګۍ","سترګۍ","سترګۍ"];
   let currentWord = words[currentWordIndex];
   initLocalStorage();
   initHelpModal();
@@ -18,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createSquares();
   addKeyboardClicks();
   loadLocalStorage();
+
 
 
   // Set the date we're counting down to
@@ -52,21 +198,9 @@ var x = setInterval(function() {
   + minutes + ":" + seconds;
 
   // If the count down is finished, write some text
-}, 1000);
-
-var y = setInterval(function time(){
-  var d = new Date();
-  var hours = 24 - d.getHours();
-  var min = 60 - d.getMinutes();
-  if((min + '').length == 1){
-    min = '0' + min;
-  }
-  var sec = 60 - d.getSeconds();
-  if((sec + '').length == 1){
-        sec = '0' + sec;
-  }
-  if (hours < 0 && min < 0 && sec < 0) {
+  if (hours == 0 && minutes == 0 && seconds == 0) {
     updateWordIndex();
+    window.localStorage.setItem("toogle",1);
   }
 }, 1000);
 
@@ -103,6 +237,7 @@ var y = setInterval(function time(){
       currentWordIndex = Number(storedCurrentWordIndex);
       currentWord = words[currentWordIndex];
     }
+    window.localStorage.getItem("toogle");
   }
 
   function loadLocalStorage() {
@@ -133,7 +268,7 @@ var y = setInterval(function time(){
 
       addKeyboardClicks();
     }
-    localStorage.setItem('currentWordIndex',0);
+    toogle = window.localStorage.getItem("toogle");
   }
 
   function resetGameState() {
@@ -369,7 +504,8 @@ var y = setInterval(function time(){
             // updateWordIndex();
             updateTotalGames();
             resetGameState();
-            toogle = false;
+            toogle = 0;
+            window.localStorage.setItem("toogle",0)
           }
           return;
         }, 1200);
@@ -420,7 +556,7 @@ var y = setInterval(function time(){
         keys[i].addEventListener("click", ({
           target
         }) => {
-          if(toogle == true){
+          if(toogle == 1){
           const key = target.getAttribute("data-key");
           if (key === "enter") {
             handleSubmitWord();
