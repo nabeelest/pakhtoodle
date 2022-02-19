@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // Set the date we're counting down to
-var countDownDate = new Date("Feb 19, 2022 23:59:59").getTime();
+var countDownDate = new Date("Feb 19, 2024 23:59:59").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -35,17 +35,38 @@ var x = setInterval(function() {
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  if((hours + '').length == 1){
+        hours = '0' + hours;
+  }
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  if((minutes + '').length == 1){
+    minutes = '0' + minutes;
+  }
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  if((seconds + '').length == 1){
+        seconds = '0' + seconds;
+  }
 
   // Display the result in the element with id="demo"
   document.getElementById("demo").innerHTML = "  " + hours + ":"
   + minutes + ":" + seconds;
 
   // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+}, 1000);
+
+var y = setInterval(function time(){
+  var d = new Date();
+  var hours = 24 - d.getHours();
+  var min = 60 - d.getMinutes();
+  if((min + '').length == 1){
+    min = '0' + min;
+  }
+  var sec = 60 - d.getSeconds();
+  if((sec + '').length == 1){
+        sec = '0' + sec;
+  }
+  if (hours < 0 && min < 0 && sec < 0) {
+    updateWordIndex();
   }
 }, 1000);
 
@@ -285,7 +306,8 @@ var x = setInterval(function() {
     console.log({
       currentWordIndex
     });
-    window.localStorage.setItem("currentWordIndex", currentWordIndex + 1);
+    currentWordIndex++;
+    window.localStorage.setItem("currentWordIndex", currentWordIndex);
   }
 
   async function handleSubmitWord() {
@@ -344,7 +366,7 @@ var x = setInterval(function() {
           if (okSelected) {
             clearBoard();
             showResult();
-            updateWordIndex();
+            // updateWordIndex();
             updateTotalGames();
             resetGameState();
             toogle = false;
@@ -361,7 +383,7 @@ var x = setInterval(function() {
           if (okSelected) {
             clearBoard();
             showLosingResult();
-            updateWordIndex();
+            // updateWordIndex();
             updateTotalGames();
             resetGameState();
           }
