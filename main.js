@@ -199,7 +199,7 @@ var x = setInterval(function() {
   + minutes + ":" + seconds;
 
   // If the count down is finished, write some text
-  if (hours == 22 && minutes == 36 && seconds == 30) {
+  if (hours == 0 && minutes == 1 && seconds == 2) {
     updateWordIndex();
     // window.localStorage.setItem("toogle",1);
   }
