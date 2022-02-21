@@ -421,7 +421,7 @@ var x = setInterval(function() {
     );
 
     if (!hasBeenGuessedAlready && !isGuessedCorrectlyLater) {
-      result = result.concat('🟩');
+      result = result.concat('🟨');
       lnCount = lnCount.concat(' ');
       if (lnCount.length == 5 || lnCount.length == 10 || lnCount.length == 15 || lnCount.length == 20 || lnCount.length == 25) {
         result = result.concat('\n');
