@@ -454,20 +454,19 @@ var x = setInterval(function() {
     }
 
     try {
-      // const res = await fetch(
-      //   `https://wordsapiv1.p.rapidapi.com/words/${guessedWord.toLowerCase()}`,
-      //   {
-      //     method: "GET",
-      //     headers: {
-      //       "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-      //       "x-rapidapi-key": "<YOU_KEY_HERE>",
-      //     },
-      //   }
-      // );
-
-      // if (!res.ok) {
-      //   throw Error();
-      // }
+      let check =  0;
+      for(var i=0; i<145; i++) {
+        if(words[i] == guessedWord){
+            check = 1;
+            break;
+        }
+        else{
+            check = 0;
+        }
+      }
+      if (check == 0) {
+        throw Error();
+      }
       const firstLetterId = guessedWordCount * 5 + 1;
 
       localStorage.setItem("availableSpace", availableSpace);
