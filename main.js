@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let lnCount = '';
   var toogle = 1;
   const words = [
+      "بدلون",
       "لپاره",
       "ټولګه",
       "غواړي",
       "اضافه",
       "تعقيب",
-      "بدلون",
       "انځور",
       "واخلي",
       "بېرته",
