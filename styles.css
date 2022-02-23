@@ -29,8 +29,9 @@ a:hover{
 
 .logoText{
   margin: 5px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
+  color: #808080;
 }
 
 #thePashto{ 
