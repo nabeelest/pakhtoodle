@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lnCount = '';
   var toogle = 1;
   const words = [
+      "څومره",
       "بدلون",
       "لپاره",
       "ټولګه",
@@ -24,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "لاندې",
       "فورمه",
       "مرسته",
-      "څومره",
       "ستاسو",
       "ولیکي",
       "لپاره",
