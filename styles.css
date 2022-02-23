@@ -22,10 +22,9 @@ a:link,a:visited{
   text-decoration: none;
 }
 
-a:hover{
+#linkText:hover{
   color: #799924;
 }
-
 
 .logoText{
   margin: 5px;
