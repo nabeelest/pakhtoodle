@@ -7,6 +7,37 @@ body {
   background-color: rgb(18, 18, 19);
 }
 
+footer{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  border-top: 1px solid rgb(58, 58, 60);
+  width: 38%;
+  color: white;
+  padding: 10px;
+}
+
+a:link,a:visited{
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #799924;
+}
+
+
+.logoText{
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#thePashto{ 
+  max-width: 25px;
+  height:auto;
+}
+
 .container{
   margin: 0;
   padding: 0;
@@ -191,6 +222,14 @@ header {
     min-width: 15vw;
     min-height: 15vw;
   }
+}
+
+@media  screen and (max-width: 1366px) {
+  .square {
+    min-width: 50px;
+    min-height: 50px;
+  }
+  
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
