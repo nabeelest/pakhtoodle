@@ -30,6 +30,10 @@ a:link,a:visited{
   color: #feda75;
 }
 
+#twitterText:hover{
+  color: #1DA1F2;
+}
+
 .logoText{
   margin: 5px;
   font-size: 12px;
