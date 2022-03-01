@@ -5155,7 +5155,7 @@ var x = setInterval(function() {
           if (okSelected) {
             clearBoard();
             showResult();
-            // updateWordIndex();
+            updateWordIndex();
             updateTotalGames();
             resetGameState();
             toogle = 0;
@@ -5173,7 +5173,7 @@ var x = setInterval(function() {
           if (okSelected) {
             clearBoard();
             showLosingResult();
-            // updateWordIndex();
+            updateWordIndex();
             updateTotalGames();
             resetGameState();
             toogle = 0;
