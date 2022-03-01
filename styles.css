@@ -26,6 +26,10 @@ a:link,a:visited{
   color: #799924;
 }
 
+#instaText:hover{
+  color: #feda75;
+}
+
 .logoText{
   margin: 5px;
   font-size: 12px;
