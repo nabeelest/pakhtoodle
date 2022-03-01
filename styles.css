@@ -22,26 +22,33 @@ a:link,a:visited{
   text-decoration: none;
 }
 
-#linkText:hover{
+.logoText:hover{
   color: #799924;
 }
 
-#instaText:hover{
-  color: #feda75;
+.credits{
+  margin-left: 5px;
+  margin-right: 5px;
 }
-
-#twitterText:hover{
-  color: #1DA1F2;
-}
-
-.logoText{
-  margin: 5px;
+.socialText{
+  margin: 3px;
   font-size: 12px;
   font-weight: 300;
   color: #808080;
 }
 
-.thePashto{ 
+.socialText:hover{
+  color: #1DA1F2;
+}
+
+.logoText{
+  margin: 3px;
+  font-size: 12px;
+  font-weight: 300;
+  color: #808080;
+}
+
+.thePashto{
   max-width: 20px;
   height:auto;
 }
