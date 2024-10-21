@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "ابايي",
           "ابتدا",
           "ابحاث",
-          "ابحار",
           "ابداع",
           "ابدال",
           "ابدال",
